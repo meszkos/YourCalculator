@@ -28,6 +28,24 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var SevenButton: UIButton!
     @IBOutlet weak var EightButton: UIButton!
     @IBOutlet weak var NineButton: UIButton!
+    @IBOutlet weak var displayLabel: UILabel!
+    
+    
+    var finishedTypingNumber: Bool = true
+    var calculatorManager = CalculatorManager()
+    
+    var displayValue: Double{
+        get{
+            guard let number = Double(displayLabel.text!) else{
+                fatalError("Can't convert displayLabel text to a Double")
+            }
+            return number
+        }
+        set{
+            displayLabel.text = String(newValue)
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +54,45 @@ class CalculatorViewController: UIViewController {
                 
     }
 
+    //MARK: - Performing calculations
+    
+    @IBAction func calculateButtonPressed(_ sender: UIButton) {
+        
+        finishedTypingNumber = true
+        
+        calculatorManager.setNumber(displayValue)
+        
+        if let calcMethod = sender.titleLabel?.text{
+            if let result = calculatorManager.calculate(symbol: calcMethod){
+                displayValue = result
+            }
+        }
+        
+    }
+    
+    @IBAction func numberButtonPressed(_ sender: UIButton) {
 
+        if let numberValue = sender.titleLabel?.text{
+            
+            if finishedTypingNumber{
+                displayLabel.text = numberValue
+                finishedTypingNumber = false
+            }else{
+                if numberValue == ","{
+                    let isInt = floor(displayValue) == displayValue
+                    
+                    if !isInt{
+                        return
+                    }
+                }
+                displayLabel.text = displayLabel.text! + numberValue
+            }
+        }
+        
+    }
+    
+    
+  //MARK: - UI Modification
     func changeButtonCornerRadius(){
         ACButton.layer.cornerRadius = 15
         PlusMinusButton.layer.cornerRadius = 15
