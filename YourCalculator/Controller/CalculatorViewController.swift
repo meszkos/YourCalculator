@@ -7,8 +7,9 @@
 
 import UIKit
 
-class CalculatorViewController: UIViewController {
+class CalculatorViewController: UIViewController, SettingsDelegate {
 
+    @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var ACButton: UIButton!
     @IBOutlet weak var PlusMinusButton: UIButton!
     @IBOutlet weak var PercentageButton: UIButton!
@@ -33,6 +34,7 @@ class CalculatorViewController: UIViewController {
     
     var finishedTypingNumber: Bool = true
     var calculatorManager = CalculatorManager()
+    let settingsController = SettingsViewController()
     
     var displayValue: Double{
         get{
@@ -51,6 +53,7 @@ class CalculatorViewController: UIViewController {
         super.viewDidLoad()
 
         changeButtonCornerRadius()
+        settingsController.delegate = self
                 
     }
 
@@ -93,6 +96,33 @@ class CalculatorViewController: UIViewController {
     
     
   //MARK: - UI Modification
+    
+    func updateUI(backgroundColor: String, operationColor: String, numberColor: String) {
+
+        ACButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: operationColor)
+        PlusMinusButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: operationColor)
+        PercentageButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: operationColor)
+        DevideButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: operationColor)
+        MultiplyButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: operationColor)
+        MinusButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: operationColor)
+        PlusButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: operationColor)
+        EqualsButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: operationColor)
+        CommaButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: numberColor)
+        OneButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: numberColor)
+        TwoButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: numberColor)
+        ThreeButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: numberColor)
+        FourButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: numberColor)
+        FiveButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: numberColor)
+        SixButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: numberColor)
+        SevenButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: numberColor)
+        EightButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: numberColor)
+        NineButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: numberColor)
+        ZeroButton.backgroundColor = calculatorManager.hexStringToUIColor(hex: numberColor)
+        displayLabel.textColor = calculatorManager.hexStringToUIColor(hex: operationColor)
+        backgroundView.backgroundColor = calculatorManager.hexStringToUIColor(hex: backgroundColor)
+
+    }
+    
     func changeButtonCornerRadius(){
         ACButton.layer.cornerRadius = 15
         PlusMinusButton.layer.cornerRadius = 15
@@ -113,5 +143,15 @@ class CalculatorViewController: UIViewController {
         SevenButton.layer.cornerRadius = 15
         EightButton.layer.cornerRadius = 15
         NineButton.layer.cornerRadius = 15
+    }
+    
+//MARK: - Delegate methods
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToSettings"{
+            let destinationVC = segue.destination as! SettingsViewController
+            
+            destinationVC.delegate = self
+        }
     }
 }

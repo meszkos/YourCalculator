@@ -14,6 +14,10 @@
 		22F2921F27A812EA003DF648 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22F2921D27A812EA003DF648 /* LaunchScreen.storyboard */; };
 		22F2922727A83A20003DF648 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2922627A83A20003DF648 /* CalculatorViewController.swift */; };
 		22F2922B27A840FB003DF648 /* CalculatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2922A27A840FB003DF648 /* CalculatorManager.swift */; };
+		22F2922E27A960CD003DF648 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2922D27A960CD003DF648 /* SettingsViewController.swift */; };
+		22F2923127A9628E003DF648 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2922F27A9628E003DF648 /* CollectionCell.swift */; };
+		22F2923227A9628E003DF648 /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22F2923027A9628E003DF648 /* CollectionCell.xib */; };
+		22F2923727AAEC25003DF648 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F2923627AAEC25003DF648 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		22F2922027A812EA003DF648 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22F2922627A83A20003DF648 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		22F2922A27A840FB003DF648 /* CalculatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorManager.swift; sourceTree = "<group>"; };
+		22F2922D27A960CD003DF648 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		22F2922F27A9628E003DF648 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
+		22F2923027A9628E003DF648 /* CollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
+		22F2923627AAEC25003DF648 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +68,14 @@
 			children = (
 				22F2921227A812DE003DF648 /* AppDelegate.swift */,
 				22F2921427A812DE003DF648 /* SceneDelegate.swift */,
+				22F2923327A96297003DF648 /* Collection Cell */,
 				22F2922C27A84106003DF648 /* Model */,
 				22F2922827A840D1003DF648 /* View */,
-				22F2922927A840E3003DF648 /* New GroupController */,
+				22F2922927A840E3003DF648 /* Controller */,
 				22F2921B27A812EA003DF648 /* Assets.xcassets */,
 				22F2921D27A812EA003DF648 /* LaunchScreen.storyboard */,
 				22F2922027A812EA003DF648 /* Info.plist */,
+				22F2923627AAEC25003DF648 /* Constants.swift */,
 			);
 			path = YourCalculator;
 			sourceTree = "<group>";
@@ -78,12 +88,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		22F2922927A840E3003DF648 /* New GroupController */ = {
+		22F2922927A840E3003DF648 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				22F2922627A83A20003DF648 /* CalculatorViewController.swift */,
+				22F2922D27A960CD003DF648 /* SettingsViewController.swift */,
 			);
-			path = "New GroupController";
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		22F2922C27A84106003DF648 /* Model */ = {
@@ -92,6 +103,15 @@
 				22F2922A27A840FB003DF648 /* CalculatorManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		22F2923327A96297003DF648 /* Collection Cell */ = {
+			isa = PBXGroup;
+			children = (
+				22F2922F27A9628E003DF648 /* CollectionCell.swift */,
+				22F2923027A9628E003DF648 /* CollectionCell.xib */,
+			);
+			path = "Collection Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +175,7 @@
 				22F2921F27A812EA003DF648 /* LaunchScreen.storyboard in Resources */,
 				22F2921C27A812EA003DF648 /* Assets.xcassets in Resources */,
 				22F2921A27A812DE003DF648 /* Main.storyboard in Resources */,
+				22F2923227A9628E003DF648 /* CollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,7 +189,10 @@
 				22F2921327A812DE003DF648 /* AppDelegate.swift in Sources */,
 				22F2922727A83A20003DF648 /* CalculatorViewController.swift in Sources */,
 				22F2921527A812DE003DF648 /* SceneDelegate.swift in Sources */,
+				22F2922E27A960CD003DF648 /* SettingsViewController.swift in Sources */,
+				22F2923727AAEC25003DF648 /* Constants.swift in Sources */,
 				22F2922B27A840FB003DF648 /* CalculatorManager.swift in Sources */,
+				22F2923127A9628E003DF648 /* CollectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
