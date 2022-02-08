@@ -22,6 +22,9 @@ class SettingsViewController: UIViewController {
     var pickedOperationColor: String?
     var pickedNumberColor: String?
     
+    let userDefaults = UserDefaults()
+    var pickedTheme = "Sea"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundView.backgroundColor = calculatorManager.hexStringToUIColor(hex: "E5E5E5")
@@ -30,18 +33,18 @@ class SettingsViewController: UIViewController {
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         
         if pickedBackgroundColor != nil, pickedOperationColor != nil, pickedNumberColor != nil{
-            delegate?.updateUI(backgroundColor: pickedBackgroundColor!, operationColor: pickedOperationColor!, numberColor: pickedNumberColor!)
+            delegate?.updateUI(backgroundColor: pickedBackgroundColor!,
+                               operationColor: pickedOperationColor!,
+                               numberColor: pickedNumberColor!)
         }
-        
+        userDefaults.setValue(pickedTheme, forKey: "theme")
         
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func pickThemeButtonPressed(_ sender: UIButton) {
-        
-        //Make it save thame after terminating app
-        
-        if let pickedTheme = sender.restorationIdentifier{
+                
+        pickedTheme = sender.restorationIdentifier!
             switch pickedTheme{
             case "Sea":
                 pickedBackgroundColor = K.seaBackgroundColor
@@ -71,6 +74,6 @@ class SettingsViewController: UIViewController {
                 print("es")
             }
             
-        }
+        
     }
 }

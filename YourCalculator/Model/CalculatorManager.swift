@@ -9,8 +9,13 @@ import Foundation
 import UIKit
 
 struct CalculatorManager{
-
+    
+    let userDefaults = UserDefaults()
     var number: Double?
+    
+    var pickedBackgroundColor: String?
+    var pickedOperationColor: String?
+    var pickedNumberColor: String?
     
     var intermediateCalculation: (n1: Double, calcMethod: String)?
     

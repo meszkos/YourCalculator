@@ -31,10 +31,16 @@ class CalculatorViewController: UIViewController, SettingsDelegate {
     @IBOutlet weak var NineButton: UIButton!
     @IBOutlet weak var displayLabel: UILabel!
     
+    var savedBackgroundColor: String?
+    var savedOperationColor: String?
+    var savedNumberColor: String?
     
     var finishedTypingNumber: Bool = true
     var calculatorManager = CalculatorManager()
     let settingsController = SettingsViewController()
+    
+    //MANAGE USER DEFAULTS
+    let userDefaults = UserDefaults()
     
     var displayValue: Double{
         get{
@@ -54,8 +60,15 @@ class CalculatorViewController: UIViewController, SettingsDelegate {
 
         changeButtonCornerRadius()
         settingsController.delegate = self
-                
+        
+        restoreUISettings()
+        
+        if savedBackgroundColor != nil, savedOperationColor != nil, savedNumberColor != nil{
+            updateUI(backgroundColor: savedBackgroundColor!, operationColor: savedOperationColor!, numberColor: savedNumberColor!)
+        }
+        
     }
+    
 
     //MARK: - Performing calculations
     
@@ -121,6 +134,41 @@ class CalculatorViewController: UIViewController, SettingsDelegate {
         displayLabel.textColor = calculatorManager.hexStringToUIColor(hex: operationColor)
         backgroundView.backgroundColor = calculatorManager.hexStringToUIColor(hex: backgroundColor)
 
+    }
+    
+    func restoreUISettings(){
+        
+        if let pickedTheme = userDefaults.value(forKey: "theme") as? String{
+            
+            switch pickedTheme{
+            case "Sea":
+                savedBackgroundColor = K.seaBackgroundColor
+                savedOperationColor = K.seaOperationColor
+                savedNumberColor = K.seaNumberColor
+            case "Earth":
+                savedBackgroundColor = K.earthBackgroundColor
+                savedOperationColor = K.earthOperationColor
+                savedNumberColor = K.earthNumberColor
+            case "Chilli":
+                savedBackgroundColor = K.chilliBackgroundColor
+                savedOperationColor = K.chilliOperationColor
+                savedNumberColor = K.chilliNumberColor
+            case "Sunset":
+                savedBackgroundColor = K.sunsetBackgroundColor
+                savedOperationColor = K.sunsetOperationColor
+                savedNumberColor = K.sunsetNumberColor
+            case "Space":
+                savedBackgroundColor = K.spaceBackgroundColor
+                savedOperationColor = K.spaceOperationColor
+                savedNumberColor = K.spaceNumberColor
+            case "Kiwi":
+                savedBackgroundColor = K.kiwiBackgroundColor
+                savedOperationColor = K.kiwiOperationColor
+                savedNumberColor = K.kiwiNumberColor
+            default:
+                print("es")
+            }
+        }
     }
     
     func changeButtonCornerRadius(){
