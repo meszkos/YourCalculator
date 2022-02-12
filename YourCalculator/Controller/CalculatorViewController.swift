@@ -39,7 +39,7 @@ class CalculatorViewController: UIViewController, SettingsDelegate {
     var calculatorManager = CalculatorManager()
     let settingsController = SettingsViewController()
     
-    //MANAGE USER DEFAULTS
+    
     let userDefaults = UserDefaults()
     
     var displayValue: Double{
