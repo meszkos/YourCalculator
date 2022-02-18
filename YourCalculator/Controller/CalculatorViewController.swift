@@ -73,6 +73,12 @@ class CalculatorViewController: UIViewController, SettingsDelegate {
     //MARK: - Performing calculations
     
     @IBAction func calculateButtonPressed(_ sender: UIButton) {
+    
+        //Make click visible for user
+        sender.alpha = 0.5
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+              sender.alpha = 1
+          }
         
         finishedTypingNumber = true
         
@@ -88,6 +94,12 @@ class CalculatorViewController: UIViewController, SettingsDelegate {
     
     @IBAction func numberButtonPressed(_ sender: UIButton) {
 
+        //Make click visible for user
+        sender.alpha = 0.5
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+              sender.alpha = 1
+          }
+        
         if let numberValue = sender.titleLabel?.text{
             
             if finishedTypingNumber{
