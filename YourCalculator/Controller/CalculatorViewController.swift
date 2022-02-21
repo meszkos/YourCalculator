@@ -116,7 +116,6 @@ class CalculatorViewController: UIViewController, SettingsDelegate {
                 displayLabel.text = displayLabel.text! + numberValue
             }
         }
-        
     }
     
     
@@ -210,7 +209,6 @@ class CalculatorViewController: UIViewController, SettingsDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToSettings"{
             let destinationVC = segue.destination as! SettingsViewController
-            
             destinationVC.delegate = self
         }
     }
